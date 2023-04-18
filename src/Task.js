@@ -13,24 +13,40 @@ const Task = ({ taskObj, onComplete }) => {
       : false;
 
   return (
-    <div className="task">
-      <h3>{taskObj.title}</h3>
-      <div className="deadline">
+    <div className="p-6 bg-[#fff] rounded-[5px] leading-normal mt-4 shadow-[0 4px 5px 0 rgb(0 0 0 / 10%)] ">
+      <h3 className="text-[18px] text-[#c8781a] ">{taskObj.title}</h3>
+      <div className="text-[12px] pt-1 ">
         son teslim:{" "}
-        <span className={timeLeft ? "bg-[#ffd9d4]" : "bg-violet-200"}>
+        <span
+          className={
+            timeLeft
+              ? "bg-[#ffd9d4] py-[3px] px-[8px] rounded-[2px] inline-block"
+              : "bg-violet-200 py-[3px] px-[8px] rounded-[2px] inline-block"
+          }
+        >
           {toNow}
         </span>
       </div>
-      <p>{taskObj.description}</p>
+      <p className="p-[0.5rem,0,0.75rem] text-[14px] text-[#444] ">
+        {taskObj.description}
+      </p>
       <div>
         {taskObj.people.map((p) => (
-          <span className="pill" key={p}>
+          <span
+            className="inline-block py-[5px] px-3 text-[14px] border border-solid border-[#ccc] mr-1 mb-1.5 rounded-[30px] "
+            key={p}
+          >
             {p}
           </span>
         ))}
       </div>
       {onComplete && (
-        <button onClick={() => onComplete(taskObj.id)}>Tamamlandı</button>
+        <button
+          className="block py-2 px-3 ml-auto bg-[#fecc91] shadow-[0 4px 5px 0 rgb(0 0 0 / 5%)] rounded-[3px] border-0 cursor-pointer "
+          onClick={() => onComplete(taskObj.id)}
+        >
+          Tamamlandı
+        </button>
       )}
     </div>
   );
